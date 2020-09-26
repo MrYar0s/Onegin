@@ -4,6 +4,7 @@
 #include <string.h>
 #include <assert.h>
 #include <ctype.h>
+#include "Onegin.h"
 
 struct line 
 {
@@ -12,18 +13,6 @@ struct line
     //! int len - length of line
     int len = 0;
 };
-
-void CreateBuffer(int* size, char** buffer);
-void QuickSort(line* n_core, int left, int right, int(*compare)(line* a, line* b));
-void PrintInFile(const line* temp);
-void GainString(char* buffer, line* mem);
-void Copy(char* storage, FILE* file);
-void Swap(line* a, line* b);
-int  CompareLeft(line* a, line* b);
-int  CompareRight(line* a, line* b);
-int  CountSize(FILE* file);
-int  nString(char* buffer);
-int  LetterCheck(const char c);
 
 int main()
 {

@@ -14,7 +14,7 @@ struct line
 
 void CreateBuffer(int* size, char** buffer);
 void QuickSort(line* n_core, int left, int right, int(*compare)(line* a, line* b));
-void PrintFile(const line* temp);
+void PrintInFile(const line* temp);
 void GainString(char* buffer, line* mem);
 void Copy(char* storage, FILE* file);
 void Swap(line* a, line* b);
@@ -44,7 +44,7 @@ int main()
     QuickSort(strings, 0, n_str - 1, CompareRight);
     QuickSort(strings, 0, n_str - 1, CompareLeft);
     
-    PrintFile(strings);
+    PrintInFile(strings);
     
     return 0;
 }
@@ -93,7 +93,7 @@ void QuickSort(line* n_core, int left, int right, int(*compare)(line* a, line* b
 
 }
 //print txt in file
-void PrintFile(const line* temp)
+void PrintInFile(const line* temp)
 {
     FILE* sorted = fopen("sorted.txt", "w");
     

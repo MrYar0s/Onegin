@@ -10,7 +10,7 @@ struct line
     //! char* str - pointer on line
     char* str = nullptr;
     //! int len - length of line
-    int   len = 0;
+    int len = 0;
 };
 
 void CreateBuffer(int* size, char** buffer);
@@ -27,7 +27,7 @@ int  LetterCheck(const char c);
 
 int main()
 {
-    int   size   = 0;
+    int size = 0;
     char* buffer = nullptr;
     
     CreateBuffer(&size, &buffer);

@@ -148,7 +148,7 @@ int CompareRight(line* a, line* b)
 
     while (count_a >= 0 && count_b >= 0)
     {
-        if (LetterCheck(a->str[count_a]) && LetterCheck(b->str[count_b]))
+        if (isalpha(a->str[count_a]) && isalpha(b->str[count_b]))
         {
             if (a->str[count_a] > b->str[count_b])
             {
@@ -163,11 +163,11 @@ int CompareRight(line* a, line* b)
         }
         else
         {
-            while (!LetterCheck(a->str[count_a]))
+            while (isalpha(a->str[count_a]))
             {
                 --(count_a);
             }
-            while (!LetterCheck(b->str[count_b]))
+            while (isalpha(b->str[count_b]))
             {
                 --(count_b);
             }
@@ -183,22 +183,41 @@ int CompareRight(line* a, line* b)
 }
 //left check
 int CompareLeft(line* a, line* b)
+int CompareLeft(line* a, line* b)
 {
 
-    int count_a = a->len,
-        count_b = b->len;
+    int count_a = 0,
+        count_b = 0;
 
-    int i = 0,
-        j = 0;
-
-    while (i < count_a && j < count_b) 
+    while (count_a < a->len && count_b < b->len)
     {
-        if (a->str[i] > b->str[j])
-            return 1;
-        if (a->str[i] < b->str[j])
+        if (isalpha(a->str[count_a]) && isalpha(b->str[count_b])) 
+        {
+            if (a->str[count_a] > b->str[count_b])
+                return 1;
+
+            if (a->str[count_a] < b->str[count_b])
+                return -1;
+
+            ++count_a;
+            ++count_b;
+        }
+        else
+        {
+            while (!isalpha(a->str[count_a]))
+                count_a++;
+
+            while (!isalpha(b->str[count_b]))
+                count_b++;
+        }
+
+        if (count_a > a->len && count_b > b->len)
+            return 0;
+        if (count_a > a->len)
             return -1;
-        ++i;
-        ++j;
+        if (count_b > b->len)
+            return 1;
+
     }
     return 0;
 }
@@ -223,16 +242,4 @@ int nString(char* buffer)
     }
 
     return count;
-}
-//letter check
-int LetterCheck(const char c)
-{
-    if (('A' <= c <= 'Z') || ('a' <= c <= 'z'))
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
 }

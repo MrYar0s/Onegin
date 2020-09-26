@@ -28,9 +28,7 @@ int main()
 {
     int   size   = 0;
     char* buffer = nullptr;
-
-    FILE* sorted = fopen("sorted.txt", "w");
-
+    
     CreateBuffer(&size, &buffer);
 
     assert(buffer);

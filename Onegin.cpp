@@ -142,7 +142,7 @@ void Swap(line* a, line* b)
     *b = temp;
 }
 //right check
-int CompareLeft(line* a, line* b)
+int CompareRight(line* a, line* b)
 {
 
     int count_a = a->len,
@@ -184,7 +184,7 @@ int CompareLeft(line* a, line* b)
     return 0;
 }
 //left check
-int CompareRight(line* a, line* b)
+int CompareLeft(line* a, line* b)
 {
 
     int count_a = a->len,

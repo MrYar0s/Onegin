@@ -97,7 +97,7 @@ void PrintInFile(const line* temp)
     
     while (temp->str != nullptr)
     {
-        fprintf(file, "%s\n", temp->str);
+        fprintf(sorted, "%s\n", temp->str);
         ++temp;
     }
     

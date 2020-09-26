@@ -1,27 +1,25 @@
 #pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-//! Function that check is c letter or not
-//! @param [in] c - name of checking char
-int  LetterCheck(const char c);
+struct line;
+
+int nString(char* buffer);
 
 //! Function that compare symbols from left sight
 //! @param [in] a - string
 //! @param [in] b - string
-int  CompareLeft(line* a, line* b);
+int CompareLeft(line* a, line* b);
 
 //! Function that compare symbols from right sight
 //! @param [in] a - string
 //! @param [in] b - string
-int  CompareRight(line* a, line* b);
+int CompareRight(line* a, line* b);
 
 //! Function that count size of the file
 //! @param [in] file - file wich size we want to count
-int  CountSize(FILE* file);
-
-//! Function that count number of strings
-//! @param [in] buffer - array of symbols from file
-//! @param [out] n_str - number of strings
-size_t n_str = int  nString(char* buffer);
+int CountSize(FILE* file);
 
 //! Function that gain strings from buffer
 //! @param [in] buffer - array of symbols from file
@@ -34,7 +32,7 @@ void GainString(char* buffer, line* strings);
 //! @param [in] line* a - first array on start
 //! @param [in] line* b - second array on start
 //! They will swap and
-//!					  line* a will be line* b
+//!					          line* a will be line* b
 //!                   line* b will be line* a
 void Swap(line* a, line* b);
 
@@ -54,7 +52,7 @@ void Copy(char* storage, FILE* file);
 //! Function that print symbols in file
 //! @param [out] file - file that contains all symbols from temp
 //! @param [in] line* temp - array of pointers that contains symbols
-void PrintFile(FILE* file, const line* temp);
+void PrintInFile(const line* temp);
 
 //! Function that sort file
 //! @param [in] line* n_core - array of pointers on strings

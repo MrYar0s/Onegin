@@ -32,7 +32,7 @@ void GainString(char* buffer, line* strings);
 //! @param [in] line* a - first array on start
 //! @param [in] line* b - second array on start
 //! They will swap and
-//!					          line* a will be line* b
+//!					  line* a will be line* b
 //!                   line* b will be line* a
 void Swap(line* a, line* b);
 

@@ -28,7 +28,7 @@ int main()
     line* strings = (line*)calloc(n_str + 1, sizeof(line));
 
     GainString(buffer, strings);
-
+    
     QuickSort(strings, 0, n_str - 1, CompareRight);
     QuickSort(strings, 0, n_str - 1, CompareLeft);
 
@@ -180,7 +180,6 @@ int CompareLeft(line* a, line* b)
 
     while (count_a < a->len && count_b < b->len)
     {
-        printf("%d\n", a->len);
         if (isalpha(a->str[count_a]) && isalpha(b->str[count_b]))
         {
             if (a->str[count_a] > b->str[count_b])

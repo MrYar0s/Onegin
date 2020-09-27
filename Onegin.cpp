@@ -4,9 +4,9 @@
 #include <string.h>
 #include <assert.h>
 #include <ctype.h>
-#include "Onegin.h"
+#include "Hamlet.h"
 
-struct line 
+struct line
 {
     //! char* str - pointer on line
     char* str = nullptr;
@@ -18,7 +18,7 @@ int main()
 {
     int size = 0;
     char* buffer = nullptr;
-    
+
     CreateBuffer(&size, &buffer);
 
     assert(buffer);
@@ -31,9 +31,9 @@ int main()
 
     QuickSort(strings, 0, n_str - 1, CompareRight);
     QuickSort(strings, 0, n_str - 1, CompareLeft);
-    
+
     PrintInFile(strings);
-    
+
     return 0;
 }
 //create buffer
@@ -84,13 +84,13 @@ void QuickSort(line* n_core, int left, int right, int(*compare)(line* a, line* b
 void PrintInFile(const line* temp)
 {
     FILE* sorted = fopen("sorted.txt", "w");
-    
+
     while (temp->str != nullptr)
     {
         fprintf(sorted, "%s\n", temp->str);
         ++temp;
     }
-    
+
     fclose(sorted);
 }
 //gain strings
@@ -99,7 +99,8 @@ void GainString(char* buffer, line* strings)
     strings->str = buffer;
     char* cur_str = buffer;
     char* next_str = strchr(buffer, '\n');
-    while (next_str != nullptr) {
+    while (next_str != nullptr)
+    {
         *next_str = '\0';
 
         next_str++;
@@ -139,40 +140,38 @@ int CompareRight(line* a, line* b)
     while (count_a >= 0 && count_b >= 0)
     {
         if (isalpha(a->str[count_a]) && isalpha(b->str[count_b]))
-        {
+        {  
             if (a->str[count_a] > b->str[count_b])
-            {
                 return 1;
-            }
+
             if (a->str[count_a] < b->str[count_b])
-            {
                 return -1;
-            }
+
             --(count_a);
             --(count_b);
         }
         else
         {
-            while (isalpha(a->str[count_a]))
-            {
+            while (!isalpha(a->str[count_a]))
                 --(count_a);
-            }
-            while (isalpha(b->str[count_b]))
-            {
+            
+            while (!isalpha(b->str[count_b]))
                 --(count_b);
-            }
         }
     }
+    
     if (count_a == -1 && count_b == -1)
         return 0;
+    
     if (count_a == -1)
         return -1;
+    
     if (count_b == -1)
         return 1;
+    
     return 0;
 }
 //left check
-int CompareLeft(line* a, line* b)
 int CompareLeft(line* a, line* b)
 {
 
@@ -181,7 +180,8 @@ int CompareLeft(line* a, line* b)
 
     while (count_a < a->len && count_b < b->len)
     {
-        if (isalpha(a->str[count_a]) && isalpha(b->str[count_b])) 
+        printf("%d\n", a->len);
+        if (isalpha(a->str[count_a]) && isalpha(b->str[count_b]))
         {
             if (a->str[count_a] > b->str[count_b])
                 return 1;
@@ -200,15 +200,17 @@ int CompareLeft(line* a, line* b)
             while (!isalpha(b->str[count_b]))
                 count_b++;
         }
-
-        if (count_a > a->len && count_b > b->len)
-            return 0;
-        if (count_a > a->len)
-            return -1;
-        if (count_b > b->len)
-            return 1;
-
     }
+    
+    if (count_a > a->len && count_b > b->len)
+        return 0;
+    
+    if (count_a > a->len)
+        return -1;
+    
+    if (count_b > b->len)
+        return 1;
+
     return 0;
 }
 //num of symbols in file
@@ -226,7 +228,8 @@ int nString(char* buffer)
 
     char* tmp_buffer = strchr(buffer, '\n');
 
-    while (tmp_buffer != NULL) {
+    while (tmp_buffer != NULL)
+    {
         tmp_buffer = strchr(tmp_buffer + 1, '\n');
         ++count;
     }

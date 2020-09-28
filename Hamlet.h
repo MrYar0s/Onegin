@@ -54,7 +54,7 @@ void Copy(char* storage, FILE* file);
 //! @param [in] line* temp - array of pointers that contains symbols
 void PrintInFile(const line* temp, FILE* file);
 
-/*//! Function that sort file
+//! Function that sort file
 //! @param [in] line* n_core - array of pointers on strings
 //! @param [in] int left - number of the first string (0)
 //! @param [in] int right - number of the last string (n_str - 1)

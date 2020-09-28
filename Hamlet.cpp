@@ -5,7 +5,6 @@ int main()
     char* buffer = nullptr;
 
     CreateBuffer(&buffer);
-    
     assert(buffer);
 
     size_t n_str = CountString(buffer);
@@ -13,7 +12,6 @@ int main()
     line* strings = (line*)calloc(n_str + 1, sizeof(line));
 
     GainString(buffer, strings);
-
     assert(strings);
     
     qsort(strings, n_str, sizeof(line), (int(*) (const void*, const void*)) CompareRight);
@@ -25,7 +23,7 @@ int main()
     qsort(strings, n_str, sizeof(line), (int(*) (const void*, const void*)) CompareLeft);
     
     FILE* sorted2 = fopen("sorted2.txt", "w");
-    PrintInFile(strings, sorted2);
+    PrintInFile(strings, sorted2);		
     fclose(sorted2);
 
     return 0;
@@ -52,9 +50,6 @@ void PrintInFile(const line* temp, FILE* file)
         fprintf(file, "%s\n", temp->str);
         ++temp;
     }
-    
-    fprintf(file, "END------------------------------------------------------\n");
-
 }
 //gain strings
 void GainString(char* buffer, line* strings)
@@ -81,11 +76,8 @@ void Copy(char* storage, FILE* file)
     assert(storage);
     assert(file);
 
-    int param = 0;
-    fseek(file, 0, SEEK_END);
-    param = ftell(file);
-    rewind(file);
-    fread(storage, sizeof(char), param, file);
+    int size = CountSize(file);
+    fread(storage, sizeof(char), size, file);
 }
 //right check
 int CompareRight(line* a, line* b)
@@ -154,10 +146,8 @@ int CompareLeft(line* a, line* b)
 
     if (count_a > a->len && count_b > b->len)
         return 0;
-
     if (count_a > a->len)
         return -1;
-
     if (count_b > b->len)
         return 1;
 
@@ -181,7 +171,7 @@ int CountString(char* buffer)
 
     char* tmp_buffer = strchr(buffer, '\n');
 
-    while (tmp_buffer != NULL) {
+    while (tmp_buffer != nullptr) {
         tmp_buffer = strchr(tmp_buffer + 1, '\n');
         ++count;
     }

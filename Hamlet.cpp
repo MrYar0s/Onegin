@@ -30,7 +30,7 @@ int main()
 }
 //create buffer
 void CreateBuffer(char** buffer)
-{
+{ 
     FILE* hamlet = fopen("hamlet.txt", "r");
 
     assert(hamlet);
@@ -45,6 +45,8 @@ void CreateBuffer(char** buffer)
 //print txt in file
 void PrintInFile(const line* temp, FILE* file)
 {
+    assert(file);
+    
     while (temp->str != nullptr)
     {
         fprintf(file, "%s\n", temp->str);
@@ -54,6 +56,8 @@ void PrintInFile(const line* temp, FILE* file)
 //gain strings
 void GainString(char* buffer, line* strings)
 {
+    assert(buffer);
+    
     strings->str = buffer;
     char* cur_str = buffer;
     char* next_str = strchr(buffer, '\n');
@@ -167,6 +171,8 @@ int CountSize(FILE* file)
 //count of strings
 int CountString(char* buffer)
 {
+    assert(buffer);
+    
     int count = 1;
 
     char* tmp_buffer = strchr(buffer, '\n');

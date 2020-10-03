@@ -1,4 +1,4 @@
-#include "Onegin.h"
+#include "Hamlet.h"
 
 //create buffer
 void CreateBuffer(char** buffer, char* argv[1])

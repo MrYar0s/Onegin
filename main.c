@@ -1,4 +1,4 @@
-#include "Onegin.h"
+#include "Hamlet.h"
 
 int main(int argc, char** argv)
 {

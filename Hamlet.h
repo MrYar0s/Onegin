@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <locale.h>
 #include <ctype.h>
 
 struct line
@@ -18,12 +19,12 @@ int CountString(char* buffer);
 //! Function that compare symbols from left sight
 //! @param [in] a - string
 //! @param [in] b - string
-int CompareLeft(line* p, line* q);
+int CompareLeft(const line* a, const line* b);
 
 //! Function that compare symbols from right sight
 //! @param [in] a - string
 //! @param [in] b - string
-int CompareRight(line* p, line* q);
+int CompareRight(const line* a, const line* b);
 
 //! Function that count size of the file
 //! @param [in] file - file wich size we want to count
@@ -42,7 +43,7 @@ void GainString(char* buffer, line* strings);
 //! @param [in] file - file wich we open
 //! @param [in] buffer - array of symbols from file
 //! @param [out] size - size of file
-void CreateBuffer(char** buffer);
+void CreateBuffer(char** buffer, char* argv[]);
 
 //! Function that copy symbols from file to array
 //! @param [in] file - file wich we want to copy
@@ -53,11 +54,3 @@ void Copy(char* storage, FILE* file);
 //! @param [out] file - file that contains all symbols from temp
 //! @param [in] line* temp - array of pointers that contains symbols
 void PrintInFile(const line* temp, FILE* file);
-
-//! Function that sort file
-//! @param [in] line* n_core - array of pointers on strings
-//! @param [in] int left - number of the first string (0)
-//! @param [in] int right - number of the last string (n_str - 1)
-//! @param [in] int(*compare)(line* a, line* b)
-//! compare - will chose type of comparation
-//! line* a and line* b will be compared

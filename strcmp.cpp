@@ -1,12 +1,11 @@
 #include "strcmp.h"
 
-void CreateText(Text* file, char* filename){
-
+void CreateText(Text* file, char* filename)
+{
     CreateBuffer(&file->buffer, filename, &file->size);
     file->lines = CountString(file->buffer);
     file->strings = (line*)calloc(file->lines + 1, sizeof(line));
     GainString(file->buffer, file->strings);
-
 }
 
 void CreateBuffer(char** buffer, char* filename, int* size)

@@ -62,17 +62,17 @@ void Copy(char* storage, FILE* file)
 int CompareRight(const line* a, const line* b)
 {
 
-    int count_a = a->len,
-        count_b = b->len;
+    int count_a = a->len - 1,
+        count_b = b->len - 1;
 
     while(((lang)a->str[count_a] == (lang)b->str[count_b]) && (0 < count_a) && (0 < count_b)){
         
         --count_a;
         --count_b;
 
-        while((!isalpha((lang)a->str[count_a])) && ((lang)a->str[count_a] != ' ') && 0 < count_a)
+        while((!isalpha((lang)a->str[count_a])) && ((lang)a->str[count_a] != ' ') && (0 < count_a))
             --count_a;
-        while((!isalpha((lang)b->str[count_b])) && ((lang)b->str[count_b] != ' ') && 0 < count_b)
+        while((!isalpha((lang)b->str[count_b])) && ((lang)b->str[count_b] != ' ') && (0 < count_b))
             --count_b;
     }
 
